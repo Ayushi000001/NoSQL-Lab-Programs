@@ -1,0 +1,6 @@
+### Lab 2: User sessions bucket
+curl -i -X PUT http://127.0.0.1:8098/buckets/user_sessions/keys/SESSION1001 \
+  -H 'Content-Type: application/json' \
+  -d '{"session_id":"SESSION1001","user_id":"U101","login_time":"2026-10-10T10:00:00Z","status":"ACTIVE"}'
+
+curl -i http://127.0.0.1:8098/buckets/user_sessions/keys/SESSION1001

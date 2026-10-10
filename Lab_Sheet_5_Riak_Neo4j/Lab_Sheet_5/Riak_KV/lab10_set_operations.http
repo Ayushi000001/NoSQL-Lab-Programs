@@ -1,0 +1,13 @@
+### Lab 10: Set operations (Riak Data Types API; support/configuration dependent)
+### This is an illustrative Riak set CRDT request. Confirm the endpoint/content-type
+### required by your installed Riak release and enable the appropriate bucket type.
+### Many releases use the Data Types API for sets, rather than storing a plain JSON list.
+curl -i -X POST http://127.0.0.1:8098/types/sets/buckets/user_interests/datatypes/U101 \
+  -H 'Content-Type: application/json' \
+  -d '{"add":["analytics","design","databases"]}'
+
+### Read current set
+curl -i http://127.0.0.1:8098/types/sets/buckets/user_interests/datatypes/U101
+
+### Set endpoint and request syntax vary across Riak versions. To remove an element,
+### submit a remove operation using the Data Types API format supported by your release.

@@ -1,0 +1,17 @@
+### Lab 1: Students bucket — create/store, retrieve, update, delete
+### Store a JSON student record
+curl -i -X PUT http://127.0.0.1:8098/buckets/students/keys/S001 \
+  -H 'Content-Type: application/json' \
+  -d '{"name":"Aarav Sharma","course":"BCA","city":"Roorkee"}'
+
+### Retrieve
+curl -i http://127.0.0.1:8098/buckets/students/keys/S001
+
+### Update (PUT replaces the stored value at the same key)
+curl -i -X PUT http://127.0.0.1:8098/buckets/students/keys/S001 \
+  -H 'Content-Type: application/json' \
+  -d '{"name":"Aarav Sharma","course":"BCA","city":"Dehradun"}'
+
+### Delete
+curl -i -X DELETE http://127.0.0.1:8098/buckets/students/keys/S001
+curl -i http://127.0.0.1:8098/buckets/students/keys/S001

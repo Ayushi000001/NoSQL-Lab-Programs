@@ -1,0 +1,13 @@
+### Lab 6: Quorum values (Riak HTTP API options are version/configuration dependent)
+### Example write with W=2 and DW=2, if supported by your Riak version/configuration
+curl -i -X PUT 'http://127.0.0.1:8098/buckets/quorum_demo/keys/item1?w=2&dw=2' \
+  -H 'Content-Type: application/json' \
+  -d '{"message":"write with W=2 and DW=2"}'
+
+### Example read with R=2, if supported
+curl -i 'http://127.0.0.1:8098/buckets/quorum_demo/keys/item1?r=2'
+
+### Notes:
+### R/W/DW must be compatible with bucket N value and available replicas.
+### Quorum settings affect how many replicas must respond; they do not create full ACID transactions.
+### Confirm supported parameter names/defaults for the installed Riak release.

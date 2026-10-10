@@ -1,0 +1,15 @@
+### Lab 8: Transaction-like cart workflow (operations are separate writes)
+### 1. Create cart
+curl -i -X PUT http://127.0.0.1:8098/buckets/cart_workflow/keys/U201 \
+  -H 'Content-Type: application/json' \
+  -d '{"user_id":"U201","items":[{"product_id":"P10","quantity":1,"price":250}],"total":250}'
+
+### 2. Update item quantity
+curl -i -X PUT http://127.0.0.1:8098/buckets/cart_workflow/keys/U201 \
+  -H 'Content-Type: application/json' \
+  -d '{"user_id":"U201","items":[{"product_id":"P10","quantity":3,"price":250}],"total":750}'
+
+### 3. Retrieve final cart
+curl -i http://127.0.0.1:8098/buckets/cart_workflow/keys/U201
+
+### Discussion: these writes are not one atomic multi-key transaction. A crash between writes can leave an intermediate state.

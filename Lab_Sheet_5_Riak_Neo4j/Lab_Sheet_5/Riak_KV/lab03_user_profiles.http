@@ -1,0 +1,6 @@
+### Lab 3: User profiles and preferences
+curl -i -X PUT http://127.0.0.1:8098/buckets/user_profiles/keys/U101 \
+  -H 'Content-Type: application/json' \
+  -d '{"name":"Ayushi","email":"ayushi@example.com","city":"Roorkee","preferences":{"language":"English","theme":"dark","notifications":true}}'
+
+curl -i http://127.0.0.1:8098/buckets/user_profiles/keys/U101

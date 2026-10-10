@@ -1,0 +1,22 @@
+### Lab 5: Key-value structure — string, JSON, list
+### String value
+curl -i -X PUT http://127.0.0.1:8098/buckets/demo_values/keys/greeting \
+  -H 'Content-Type: text/plain' \
+  -d 'Hello from Riak KV'
+curl -i http://127.0.0.1:8098/buckets/demo_values/keys/greeting
+
+### JSON document value
+curl -i -X PUT http://127.0.0.1:8098/buckets/demo_values/keys/student-json \
+  -H 'Content-Type: application/json' \
+  -d '{"id":"S002","name":"Diya Verma","course":"BCA"}'
+curl -i http://127.0.0.1:8098/buckets/demo_values/keys/student-json
+
+### List value encoded as JSON
+curl -i -X PUT http://127.0.0.1:8098/buckets/demo_values/keys/interests \
+  -H 'Content-Type: application/json' \
+  -d '["analytics","databases","design"]'
+curl -i http://127.0.0.1:8098/buckets/demo_values/keys/interests
+
+### Explanation:
+### Bucket = logical namespace/collection; key = unique identifier inside bucket;
+### value = opaque stored bytes (the application interprets it as text/JSON/list).
