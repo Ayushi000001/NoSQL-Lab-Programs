@@ -1,0 +1,19 @@
+# Lab 4: Redis Student Information System
+# Run these commands in redis-cli
+SET student:1 "Aarav Sharma"
+SET student:2 "Diya Verma"
+SET student:3 "Kabir Singh"
+SET student:4 "Meera Joshi"
+SET student:5 "Reyansh Gupta"
+
+# Retrieve one student
+GET student:3
+
+# Update a student's value
+SET student:3 "Kabir S."
+
+# Delete a student
+DEL student:5
+
+# Display all student keys (KEYS is fine for a small lab database; avoid it on production)
+KEYS student:*
