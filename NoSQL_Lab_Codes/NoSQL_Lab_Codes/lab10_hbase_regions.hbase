@@ -1,0 +1,12 @@
+# Lab 10: Multiple regions
+# Create initial regions using split keys. Availability of SPLITS syntax depends on HBase version.
+create 'RegionDemo', 'data', SPLITS => ['m', 't']
+put 'RegionDemo', 'a001', 'data:value', 'Region range before m'
+put 'RegionDemo', 'n001', 'data:value', 'Region range m to t'
+put 'RegionDemo', 'z001', 'data:value', 'Region range t onward'
+scan 'RegionDemo'
+# Inspect region metadata using the commands supported by your HBase version:
+list_regions 'RegionDemo'
+# If list_regions is unavailable, use HBase UI (Master UI) or the hbase hbck/reporting tools.
+# RegionServers host regions, serve reads/writes, and allow regions to be distributed across servers.
+# Multiple regions on one server demonstrate partitioning, not high availability by themselves.

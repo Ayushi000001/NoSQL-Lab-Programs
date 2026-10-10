@@ -1,0 +1,12 @@
+# Lab 7: Page-view counters
+create 'WebsiteCounter', 'views'
+# Use incr for atomic counter increments (value must be a numeric counter cell)
+incr 'WebsiteCounter', 'home', 'views:count', 1
+incr 'WebsiteCounter', 'home', 'views:count', 1
+incr 'WebsiteCounter', 'home', 'views:count', 1
+incr 'WebsiteCounter', 'about', 'views:count', 1
+incr 'WebsiteCounter', 'about', 'views:count', 1
+incr 'WebsiteCounter', 'contact', 'views:count', 1
+get_counter 'WebsiteCounter', 'home', 'views:count'
+get_counter 'WebsiteCounter', 'about', 'views:count'
+get_counter 'WebsiteCounter', 'contact', 'views:count'

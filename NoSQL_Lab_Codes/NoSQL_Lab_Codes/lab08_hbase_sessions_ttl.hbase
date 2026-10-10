@@ -1,0 +1,13 @@
+# Lab 8: Session table with TTL (TTL is specified in seconds)
+# 3600 seconds = 1 hour. Use a fresh table name if this already exists.
+create 'UserSessions', {NAME => 'session', TTL => 3600}, 'user'
+put 'UserSessions', 'SID1001', 'session:token', 'token-A1'
+put 'UserSessions', 'SID1001', 'session:created_at', '2026-10-10T10:00:00'
+put 'UserSessions', 'SID1001', 'user:user_id', 'U101'
+put 'UserSessions', 'SID1002', 'session:token', 'token-B2'
+put 'UserSessions', 'SID1002', 'session:created_at', '2026-10-10T10:05:00'
+put 'UserSessions', 'SID1002', 'user:user_id', 'U102'
+scan 'UserSessions'
+# Wait longer than the configured TTL, then run:
+scan 'UserSessions'
+# Expiration visibility/physical cleanup can depend on compaction and HBase version.

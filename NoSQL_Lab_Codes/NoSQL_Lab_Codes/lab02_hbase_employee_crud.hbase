@@ -1,0 +1,14 @@
+# Lab 2: Employee CRUD
+create 'Employee', 'personal', 'job'
+put 'Employee', 'E101', 'personal:name', 'Riya'
+put 'Employee', 'E101', 'personal:city', 'Dehradun'
+put 'Employee', 'E101', 'job:role', 'Analyst'
+put 'Employee', 'E101', 'job:salary', '25000'
+get 'Employee', 'E101'
+scan 'Employee'
+# Update a value by writing a new cell version
+put 'Employee', 'E101', 'job:salary', '28000'
+get 'Employee', 'E101'
+# Delete one column qualifier
+delete 'Employee', 'E101', 'personal:city'
+get 'Employee', 'E101'

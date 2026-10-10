@@ -1,0 +1,14 @@
+# Lab 6: Column-family data model
+create 'ProductCatalog', 'product', 'inventory', 'pricing'
+put 'ProductCatalog', 'P001', 'product:name', 'Wireless Mouse'
+put 'ProductCatalog', 'P001', 'product:brand', 'Acme'
+put 'ProductCatalog', 'P001', 'inventory:warehouse', 'WH-01'
+put 'ProductCatalog', 'P001', 'inventory:quantity', '75'
+put 'ProductCatalog', 'P001', 'pricing:currency', 'INR'
+put 'ProductCatalog', 'P001', 'pricing:amount', '799'
+put 'ProductCatalog', 'P002', 'product:name', 'Keyboard'
+put 'ProductCatalog', 'P002', 'inventory:quantity', '40'
+get 'ProductCatalog', 'P001'
+scan 'ProductCatalog'
+# Explanation: product:name and product:brand are qualifiers in family product.
+# inventory and pricing are separate column families; qualifiers can vary by row.

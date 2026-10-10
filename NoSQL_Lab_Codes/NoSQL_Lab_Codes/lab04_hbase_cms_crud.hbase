@@ -1,0 +1,16 @@
+# Lab 4: Content Management System CRUD
+create 'CMS', 'content', 'author', 'metadata'
+put 'CMS', 'C001', 'content:title', 'HBase Basics'
+put 'CMS', 'C001', 'content:body', 'Introduction to HBase'
+put 'CMS', 'C001', 'author:name', 'Ayushi'
+put 'CMS', 'C001', 'metadata:status', 'draft'
+put 'CMS', 'C001', 'metadata:category', 'Technology'
+# Update
+put 'CMS', 'C001', 'metadata:status', 'published'
+put 'CMS', 'C001', 'content:title', 'Introduction to Apache HBase'
+# Retrieve
+get 'CMS', 'C001'
+scan 'CMS'
+# Delete a qualifier, then retrieve again
+delete 'CMS', 'C001', 'content:body'
+get 'CMS', 'C001'

@@ -1,0 +1,13 @@
+# Lab 9: Row-key design for horizontal scaling
+# Prefix-salted row keys distribute writes across key ranges better than sequential IDs.
+create 'OrdersByShard', 'order', 'customer'
+put 'OrdersByShard', '01#ORD1001', 'order:amount', '1200'
+put 'OrdersByShard', '01#ORD1001', 'order:status', 'PLACED'
+put 'OrdersByShard', '02#ORD1002', 'order:amount', '850'
+put 'OrdersByShard', '02#ORD1002', 'order:status', 'SHIPPED'
+put 'OrdersByShard', '03#ORD1003', 'order:amount', '2400'
+put 'OrdersByShard', '03#ORD1003', 'order:status', 'PLACED'
+put 'OrdersByShard', '00#ORD1004', 'order:amount', '500'
+put 'OrdersByShard', '00#ORD1004', 'order:status', 'DELIVERED'
+scan 'OrdersByShard'
+# Note: salt/prefix strategy must match query patterns; choose deterministic buckets in production.
